@@ -1,0 +1,101 @@
+<form
+    [formGroup]="fg"
+    (ngSubmit)="guardar(
+        fg.controls['nombre'].value,
+        fg.controls['apellido'].value,
+        fg.controls['url'].value,
+        fg.controls['pais'].value,
+        fg.controls['psicion'].value,
+        fg.controls['nroCamiseta'].value
+    )">
+  <div class="form-group">
+    <label for="nombre">Nombre</label>
+    <input type="text" class="form-control"
+        id="nombre" placeholder="Ingresar nombre..."
+        [formControl]="fg.controls['nombre']">
+    <div *ngIf="fg.controls['nombre'].hasError('required')"
+        class="alert alert-danger" role="alert">
+        nombre es obligatorio!
+    </div>
+    <div *ngIf="fg.controls['nombre'].hasError('invalidNombre')"
+        class="alert alert-danger" role="alert">
+        el nombre es invalido!
+    </div>
+    <div *ngIf="fg.controls['nombre'].hasError('minLongNombre')"
+        class="alert alert-danger" role="alert">
+        el nombre debe tener al menos {{ minLongitud }} caracteres!
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="apellido">Apellido</label>
+    <input type="text" class="form-control"
+        id="apellido" placeholder="Ingresar apellido..."
+        [formControl]="fg.controls['apellido']">
+    <div *ngIf="fg.controls['apellido'].hasError('required')"
+        class="alert alert-danger" role="alert">
+        Apellido es obligatorio!
+    </div>
+    <div *ngIf="fg.controls['apellido'].hasError('invalidNombre')"
+        class="alert alert-danger" role="alert">
+        el apellido es invalido!
+    </div>
+    <div *ngIf="fg.controls['apellido'].hasError('minLongNombre')"
+        class="alert alert-danger" role="alert">
+        el apellido debe tener al menos {{ minLongitud }} caracteres!
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="imagenUrl">Imagen Url</label>
+    <input type="url" class="form-control"
+        id="imagenUrl" placeholder="Ingresar url..."
+        [formControl]="fg.controls['url']">
+  </div>
+  <div class="form-group">
+    <label for="pais">País</label>
+    <input type="text" class="form-control"
+        id="pais" placeholder="Ingresar país..."
+        [formControl]="fg.controls['pais']">
+    <ul>
+        <li *ngFor="let r of searchResults;">{{r}}</li>
+    </ul>
+    <div *ngIf="fg.controls['pais'].hasError('required')"
+        class="alert alert-danger" role="alert">
+        País es obligatorio!
+    </div>
+    <div *ngIf="fg.controls['pais'].hasError('invalidNombre')"
+        class="alert alert-danger" role="alert">
+        el país es invalido!
+    </div>
+    <div *ngIf="fg.controls['pais'].hasError('minLongNombre')"
+        class="alert alert-danger" role="alert">
+        el país debe tener al menos {{ minLongitud }} caracteres!
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="posicion">Posición</label>
+    <input type="text" class="form-control"
+        id="posicion" placeholder="Ingresar posición..."
+        [formControl]="fg.controls['posicion']">
+    <div *ngIf="fg.controls['posicion'].hasError('required')"
+        class="alert alert-danger" role="alert">
+        Posición es obligatoria!
+    </div>
+    <div *ngIf="fg.controls['posicion'].hasError('invalidNombre')"
+        class="alert alert-danger" role="alert">
+        La posición es invalida!
+    </div>
+    <div *ngIf="fg.controls['posicion'].hasError('minLongNombre')"
+        class="alert alert-danger" role="alert">
+        La posición debe tener al menos {{ minLongitud }} caracteres!
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="nroCamiseta">Nro Camiseta</label>
+    <input type="text" class="form-control"
+        id="nroCamiseta" placeholder="Ingresar Nro de la camiseta..."
+        [formControl]="fg.controls['nroCamiseta']">
+  </div>
+  <button type="submit" class="btn btn-primary"
+        *ngIf="fg.valid"
+        >Guardar!</button>
+</form>

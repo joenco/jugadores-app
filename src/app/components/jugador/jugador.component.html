@@ -1,0 +1,36 @@
+<div class="card-content" [@esFavorito]="jugador.isSelected() ? 'estadoFavorito' : 'estadoNoFavorito'">
+  <div class="card-img">
+    <img src="{{jugador.imagen}}" alt="{{jugador.toString()">
+    <span>
+      <h4>{{position}}</h4>
+    </span>
+  </div>
+  <div class="card-desc">
+    <h3>{{jugador.toStringg()}}</h3>
+    <p>Habilidades</p>
+    <div>
+      <a href="#" (click)="voteUp()" appTrackearClick data-trackear-tags="jugador_vote_up jugadores_item">
+        <i class="material-icons md-18">thumb_up</i>
+      </a>
+      &nbsp;
+      <a href="#" (click)="voteDown()" appTrackearClick data-trackear-tags="jugador_vote_down jugadores_item">
+        <i class="material-icons md-18">thumb_down</i>
+      </a>
+      &nbsp;
+      Votos: {{jugador.votes}}
+    </div>
+    <ul>
+      <li *ngFor="let habilidad of jugador.habilidades;">
+        <span class="container" [ngSwitch]="habilidad">
+          <i *ngSwitchCase="'velocidad'" style="color: red;">{{habilidad}} *</i>
+          <i *ngSwitchDefault>{{ habilidad }}</i>
+        </span>
+      </li>
+    </ul>
+    <a href="#" class="btn-card" (click)="ir()" appTrackearClick data-trackear-tags="jugador_elegir_preferido jugadores_item">IR!</a>
+    <span *ngIf="jugador.isSelected()">
+      <span ngNonBindable>{{ PREFERIDO! }}</span>
+    </span>
+    <a [routerLink]="['/jugador', jugador.id]">Ver Jugador!</a>
+  </div>
+</div>

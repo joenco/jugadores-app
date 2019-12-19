@@ -1,0 +1,13 @@
+<form *ngIf="!loginService.getUser()">
+    <div class="form-group">
+        <label for="username">Usuario</label>
+        <input class="form-control" value="user" name="username" #username>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" type="password" value="password" name="password" #password>
+    </div>
+    <button class="btn btn-default" (click)="onLogin(username.value, password.value)">Entrar!</button>
+  {{mensajeError}}
+</form>
+<button class="btn btn-default" (click)="onLogout()" *ngIf="loginService.getUser()">Salir!</button>

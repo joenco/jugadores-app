@@ -1,0 +1,41 @@
+<div class="container content">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <span class="anchor" id="formLogin"></span>
+
+            <!-- form card login with validation feedback -->
+            <div class="card card-outline-secondary">
+                <div class="card-header">
+                    <h3 class="mb-0">Jugadores</h3>
+                </div>
+                <div class="card-body">
+                    <app-form-jugador (onItemAdded)="agregado($event)">
+                    </app-form-jugador>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="mb-5">
+
+    <div class="row row-flex">
+        <app-jugador
+            *ngFor="let j of jugadoresApiClient.getAll(); let i=index"
+            [jugador]="j"
+            [idx]="i"
+            (onClicked)='elegido(j)'
+            appEspiame
+            >
+        </app-juador>
+    </div>
+
+    <h class="mb-5">
+
+    <div class="row row-flex">
+        <h5>Actividad</h5>
+        <ul>
+            <li *ngFor="let u of updates;">{{u}}!</li>
+        </ul>
+    </div>
+
+</div>
