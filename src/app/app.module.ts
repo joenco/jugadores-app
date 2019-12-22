@@ -23,6 +23,8 @@ import { LoginGuard } from './components/login/login.guard';
 import { Observable, from } from 'rxjs';
 import { map, flatMap } from 'rxjs/operators';
 import { ErrorComponent } from './components/error/error.component';
+import { EspiameDirective } from './espiame.directive';
+import { TrackearClickDirective } from './trackear-click.directive';
 
 // app config
 export interface AppConfig {
@@ -134,7 +136,9 @@ function HttpLoaderFactory(http: HttpClient) {
     FormJugadorComponent,
     LoginComponent,
     DetalleJugadorComponent,
-    ErrorComponent
+    ErrorComponent,
+    EspiameDirective,
+    TrackearClickDirective
   ],
   imports: [
     BrowserModule,
